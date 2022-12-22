@@ -1,0 +1,2 @@
+-i https://pypi.org/simple
+google-cloud-firestore==2.7.3

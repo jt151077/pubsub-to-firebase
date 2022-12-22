@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello</title>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDtom6ZjwIDBSYJ14Sgwp-px_MmuHqUrFE",
+      authDomain: "tomra-20221222.firebaseapp.com",
+      projectId: "tomra-20221222",
+      storageBucket: "tomra-20221222.appspot.com",
+      messagingSenderId: "701327689003",
+      appId: "1:701327689003:web:1650b75ca318b601aeb16e"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = getFirestore()
+    const unsub = onSnapshot(doc(db, "crusher", "status"), (doc) => {
+      console.log("Current data: ", doc.data());
+      const val = doc.data()['value']
+      document.getElementById("val").innerHTML = val;
+      var color;
+
+      if (val >= 100) {
+        color = '#FF0000';
+      }
+      else if (val < 100 && val >= 70) {
+        color = '#D68910';
+      }
+      else if (val < 70 && val >= 40) {
+        color = '#F1C40F';
+      }
+      else {
+        color = '#229954';
+      }
+
+      var trafficlightCanvas = document.getElementById('trafficlight');
+      var trafficlightContext = canvas.getContext('2d');
+      trafficlightContext.fillStyle = color;
+      trafficlightContext.fill();
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="message">
+    Value
+  </div>
+  <div id="val">
+    Value
+  </div>
+  <div>
+    <canvas id="trafficlight" width="140" height="140"></canvas>
+    <script>
+      var canvas = document.getElementById('trafficlight');
+      var context = canvas.getContext('2d');
+      var centerX = canvas.width / 2;
+      var centerY = canvas.height / 2;
+      var radius = 70;
+
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = "#000000";
+      context.fill();
+    </script>
+  </div>
+</body>
+
+</html>
