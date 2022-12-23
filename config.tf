@@ -37,12 +37,13 @@ terraform {
 }
 
 provider "google-beta" {
+  # necessarey for setting Firebase/Firestore via Terraform
   user_project_override = true
 }
 
 locals {
-  project_id             = "tomra-20221222"
-  project_number         = 701327689003
+  project_id             = "<PROJECT_ID>"
+  project_number         = <PROJECT_NUMBER>
   project_default_region = "europe-west1"
   gcp_service_list = [
     "bigquery.googleapis.com",

@@ -20,7 +20,7 @@ import random
 from google.cloud import pubsub_v1
 
 publisher = pubsub_v1.PublisherClient()
-topic_path = publisher.topic_path("tomra-20221222", "crusher-topic")
+topic_path = publisher.topic_path("<PROJECT_ID>", "crusher-topic")
 
 status = [
     "running",
