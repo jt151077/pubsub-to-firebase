@@ -11,8 +11,8 @@ Example repository which takes events via Pub/Sub, which triggers a CloudFunctio
 
 1. Find out your GCP project's id and number from the dashboard in the cloud console, and run the following commands in a terminal at the root of source code (replace `your_project_number` and `your_project_id` by the correct values):
 ```shell
-find . -type f -not -path '*/\.*' -exec sed -i 's/PROJECT_NMR/your_project_number/g' {} +
-find . -type f -not -path '*/\.*' -exec sed -i 's/PROJECT_ID/your_project_id/g' {} +
+find . -type f -not -path '*/\.*' -exec sed -i 's/<PROJECT_NMR>/your_project_number/g' {} +
+find . -type f -not -path '*/\.*' -exec sed -i 's/<PROJECT_ID>/your_project_id/g' {} +
 ```
 
 ## Install
