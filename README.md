@@ -48,6 +48,11 @@ $ firebase deploy
 5. Add a new user under the `Users` tab
 
 
+6. Go to the application's URL, login with a valid user
+
+
+7. Use the file `crusher_status.py` to publish events to the page. The value and color should update, as messages are received
+
 
 
 ## Uninstall
