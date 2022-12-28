@@ -18,6 +18,7 @@ import json
 import math
 import os
 import base64
+import functions_framework
 
 from google.cloud import firestore
 

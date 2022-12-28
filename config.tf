@@ -43,11 +43,9 @@ provider "google-beta" {
 
 locals {
   project_id             = "<PROJECT_ID>"
-  project_number         = <PROJECT_NUMBER>
+  project_number         = <PROJECT_NMR>
   project_default_region = "europe-west1"
   gcp_service_list = [
-    "bigquery.googleapis.com",
-    "bigquerystorage.googleapis.com",
     "cloudbuild.googleapis.com",
     "cloudfunctions.googleapis.com",
     "firebase.googleapis.com",
@@ -55,8 +53,7 @@ locals {
     "iam.googleapis.com",
     "iamcredentials.googleapis.com",
     "pubsub.googleapis.com",
-    "storage.googleapis.com",
-    "vpcaccess.googleapis.com"
+    "storage.googleapis.com"
   ]
 }
 
