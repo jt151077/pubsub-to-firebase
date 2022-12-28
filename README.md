@@ -35,7 +35,7 @@ $ terraform apply
 $ cd app/
 $ npm install -g firebase-tools
 $ firebase login
-$ firebase use tomra-20221222
+$ firebase use <PROJECT_ID>
 $ firebase deploy
 ```
 
