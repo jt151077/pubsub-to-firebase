@@ -33,11 +33,21 @@ $ terraform apply
 3. Deploy the Firebase app
 ```shell 
 $ cd app/
-$ npm install -g firebase-tools
+$ npm install -g firebase-tools (if not already present)
 $ firebase login
 $ firebase use <PROJECT_ID>
 $ firebase deploy
 ```
+
+
+4. Enable authentication in Firebase, and choose `Email/Password` as the provider
+
+![](imgs/1.png)
+
+
+5. Add a new user under the `Users` tab
+
+
 
 
 ## Uninstall
