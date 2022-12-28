@@ -26,7 +26,7 @@ $ terraform apply
 ```
 
 
-2. From the terraform output, update the necessary fields in the `app/public/index.html` under `const firebaseConfig`
+2. From the terraform output, update the necessary fields in the `app/public/script.js` under `const firebaseConfig`
 
 
 
