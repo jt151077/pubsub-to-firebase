@@ -28,7 +28,7 @@ status = [
 ]
 
 item = {
-    "status": status[0],
+    "status": status[1],
     "value": random.randrange(5, 20, 3)
 }
 

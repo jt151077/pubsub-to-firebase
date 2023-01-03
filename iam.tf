@@ -25,32 +25,15 @@ resource "google_project_iam_member" "publisher" {
   member  = "serviceAccount:${local.project_id}@appspot.gserviceaccount.com"
 }
 
-
 resource "google_storage_bucket_iam_member" "member" {
+  depends_on = [
+    google_project_service.gcp_services
+  ]
+
   bucket = google_storage_bucket.crusher_function_bucket.name
   role   = "roles/storage.objectViewer"
   member = "serviceAccount:${local.project_number}@cloudbuild.gserviceaccount.com"
 
-}
-
-resource "google_project_iam_member" "jobUser" {
-  depends_on = [
-    google_cloudfunctions_function.crusher_function
-  ]
-
-  project = local.project_id
-  role    = "roles/bigquery.jobUser"
-  member  = "serviceAccount:${local.project_id}@appspot.gserviceaccount.com"
-}
-
-resource "google_project_iam_member" "dataEditor" {
-  depends_on = [
-    google_cloudfunctions_function.crusher_function
-  ]
-
-  project = local.project_id
-  role    = "roles/bigquery.dataEditor"
-  member  = "serviceAccount:${local.project_id}@appspot.gserviceaccount.com"
 }
 
 resource "google_project_iam_member" "datastoreUser" {
@@ -61,4 +44,44 @@ resource "google_project_iam_member" "datastoreUser" {
   project = local.project_id
   role    = "roles/datastore.user"
   member  = "serviceAccount:${local.project_id}@appspot.gserviceaccount.com"
+}
+
+resource "google_service_account" "account" {
+  depends_on = [
+    google_cloudfunctions_function.crusher_function
+  ]
+
+  project      = local.project_id
+  account_id   = "gcf-sa"
+  display_name = "Test Service Account - used for both the cloud function and eventarc trigger in the test"
+}
+
+resource "google_project_iam_member" "invoking" {
+  depends_on = [
+    google_service_account.account
+  ]
+
+  project = local.project_id
+  role    = "roles/run.invoker"
+  member  = "serviceAccount:${google_service_account.account.email}"
+}
+
+resource "google_project_iam_member" "event-receiving" {
+  depends_on = [
+    google_service_account.account
+  ]
+
+  project = local.project_id
+  role    = "roles/eventarc.eventReceiver"
+  member  = "serviceAccount:${google_service_account.account.email}"
+}
+
+resource "google_project_iam_member" "datastoreUser1" {
+  depends_on = [
+    google_service_account.account
+  ]
+
+  project = local.project_id
+  role    = "roles/datastore.user"
+  member  = "serviceAccount:${google_service_account.account.email}"
 }

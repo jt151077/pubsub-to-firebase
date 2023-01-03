@@ -18,6 +18,7 @@ import json
 import math
 import os
 import base64
+import random
 import functions_framework
 
 from google.cloud import firestore
@@ -39,9 +40,10 @@ def crusher(data, context):
     
     doc_ref = client.collection('crusher').document("status")
     if math.isnan(val):
-        doc_ref.set({'value': 0})
+        doc_ref.set({'value': 0, 'pant': 1000000})
     else:
-        doc_ref.update({'value': firestore.Increment(val)})
+        newpant = random.randint(10000, 20000)
+        doc_ref.update({'value': firestore.Increment(val), 'pant': firestore.Increment(newpant)})
 
     return "ok"
 

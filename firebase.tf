@@ -40,7 +40,10 @@ resource "google_firestore_document" "document" {
   fields      = <<EOT
   {
       "value":{
-          "integerValue": "0"
+        "integerValue": "0"
+      },
+      "pant": {
+        "integerValue": "1000000"
       }
   }
   EOT

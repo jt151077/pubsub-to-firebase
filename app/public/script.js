@@ -2,7 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
-const firebaseConfig = {};
+const firebaseConfig = {
+    apiKey: "AIzaSyDtom6ZjwIDBSYJ14Sgwp-px_MmuHqUrFE",
+    authDomain: "tomra-20221222.firebaseapp.com",
+    projectId: "tomra-20221222",
+    storageBucket: "tomra-20221222.appspot.com",
+    messagingSenderId: "701327689003",
+    appId: "1:701327689003:web:1650b75ca318b601aeb16e"
+  };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -47,6 +54,8 @@ submitButton.addEventListener("click", function () {
                 console.log("Current data: ", doc.data());
                 const val = doc.data()['value']
                 document.getElementById("val").innerHTML = val;
+                const pant = doc.data()['pant']
+                document.getElementById("pant").innerHTML = pant;
                 var color;
 
                 if (val >= 100) {
