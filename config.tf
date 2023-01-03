@@ -42,8 +42,8 @@ provider "google-beta" {
 }
 
 locals {
-  project_id             = "tomra-20221222"
-  project_number         = 701327689003
+  project_id             = "<PROJECT_ID>"
+  project_number         = <PROJECT_NMR>
   project_default_region = "europe-west1"
   gcp_service_list = [
     "cloudbuild.googleapis.com",

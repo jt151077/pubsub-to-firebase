@@ -20,11 +20,11 @@ import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasej
 
 const firebaseConfig = {
     apiKey: "AIzaSyDtom6ZjwIDBSYJ14Sgwp-px_MmuHqUrFE",
-    authDomain: "tomra-20221222.firebaseapp.com",
-    projectId: "tomra-20221222",
-    storageBucket: "tomra-20221222.appspot.com",
-    messagingSenderId: "701327689003",
-    appId: "1:701327689003:web:1650b75ca318b601aeb16e"
+    authDomain: "<PROJECT_ID>.firebaseapp.com",
+    projectId: "<PROJECT_ID>",
+    storageBucket: "<PROJECT_ID>.appspot.com",
+    messagingSenderId: "<PROJECT_NMR>",
+    appId: "1:<PROJECT_NMR>:web:1650b75ca318b601aeb16e"
   };
 
 const app = initializeApp(firebaseConfig);
