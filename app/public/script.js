@@ -18,14 +18,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDtom6ZjwIDBSYJ14Sgwp-px_MmuHqUrFE",
-    authDomain: "<PROJECT_ID>.firebaseapp.com",
-    projectId: "<PROJECT_ID>",
-    storageBucket: "<PROJECT_ID>.appspot.com",
-    messagingSenderId: "<PROJECT_NMR>",
-    appId: "1:<PROJECT_NMR>:web:1650b75ca318b601aeb16e"
-  };
+const firebaseConfig = {};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
