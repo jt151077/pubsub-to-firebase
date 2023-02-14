@@ -93,3 +93,50 @@ resource "google_cloudfunctions_function" "crusher_function" {
     PROJECT_ID = local.project_id
   }
 }
+
+/*resource "google_cloudfunctions2_function" "function" {
+  depends_on = [
+    google_project_service.gcp_services,
+    google_storage_bucket.crusher_function_bucket,
+    google_storage_bucket_object.crusher_archive,
+    google_pubsub_topic.crusher-topic
+  ]
+
+  project  = local.project_id
+  name     = "crusher-data-2"
+  location = local.project_default_region
+
+  build_config {
+    runtime     = "python38"
+    entry_point = "crusher" # Set the entry point 
+    environment_variables = {
+      PROJECT_ID = local.project_id
+    }
+    source {
+      storage_source {
+        bucket = google_storage_bucket.crusher_function_bucket.name
+        object = google_storage_bucket_object.crusher_archive.name
+      }
+    }
+  }
+
+  service_config {
+    max_instance_count = 1000
+    min_instance_count = 0
+    available_memory   = "256Mi"
+    timeout_seconds    = 60
+    environment_variables = {
+      PROJECT_ID = local.project_id
+    }
+    ingress_settings               = "ALLOW_INTERNAL_ONLY"
+    all_traffic_on_latest_revision = true
+    service_account_email          = google_service_account.account.email
+  }
+
+  event_trigger {
+    trigger_region = local.project_default_region
+    event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+    pubsub_topic   = google_pubsub_topic.crusher-topic.id
+    retry_policy          = "RETRY_POLICY_DO_NOT_RETRY"
+  }
+}*/
